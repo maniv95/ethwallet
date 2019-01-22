@@ -8,8 +8,8 @@ class GetTxByAdd extends Component {
         super(props)
         this.state = {
           BCAddress:'0x421a167a34932e90e4e5593739279e660314ec6d',
-          endBlockNumber:'2000',
-          startBlockNumber:'3000'
+          startBlockNumber:'2000',
+          endBlockNumber:'3000',
         }
         this.updateStartBlockNumber = this.updateStartBlockNumber.bind(this);
         this.updateEndBlockNumber = this.updateEndBlockNumber.bind(this);
