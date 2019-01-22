@@ -14,7 +14,7 @@ const Header = () => (
   <header>
     <nav>
       <ul>
-        <li><Link to='/'><Icon size={25} icon={home}/><br/>Home</Link></li>
+        <li><Link to='/'><Icon size={25} icon={home}/>Home</Link></li>
         <li><Link to='/CreateAccount'><Icon size={25} icon={userPlus}/><br/>New Account</Link></li>
         <li><Link to='/ViewAccount'><Icon size={25} icon={ic_account_balance_wallet}/><br/>View Account</Link></li>
         <li><Link to='/SendEth'><Icon size={25} icon={ic_send}/><br/>Send Eth</Link></li>

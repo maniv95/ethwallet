@@ -20,6 +20,7 @@
 
 input[type="file"] {
     display: inline-block;
+    color: white;
 }
 
 table,th,td
