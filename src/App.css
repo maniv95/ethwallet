@@ -1,0 +1,61 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #333;
+  height: 80px;
+  padding: 10px;
+  width: 98.5%;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: small;
+}
+
+input[type="file"] {
+    display: inline-block;
+}
+
+table,th,td
+{   
+    table-layout:fixed;
+    width: 100%;
+    overflow:hidden;
+    white-space: nowrap;
+    text-align: center;
+    color: white;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #0b1011;
+}
+
+li {
+  float: left;
+  width: 14%;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #54899d;
+}
+body{
+  background-image: url("F:/Blockchain/ethwallet/src/images/10.jpg");
+  background-size: 100%;
+}
