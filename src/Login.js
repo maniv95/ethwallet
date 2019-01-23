@@ -47,7 +47,7 @@ class Login extends Component{
   			<div className="App">
             <br/><br/>
           		<header className="App-header">
-          		  <h2>Login To Check Balance</h2>
+          		  <h2>Login To View</h2>
           		</header>
               <Grid>
                 <div>

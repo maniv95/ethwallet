@@ -30,7 +30,7 @@ class CreateAccount extends Component{
         <div className="App">
               <br/><br/>
           		<header className="App-header">
-          		  <h2>Create Blockchain Account</h2>
+          		  <h2>Create New Blockchain Account</h2>
           		</header>
               <Grid>
                 <div>
