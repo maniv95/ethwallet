@@ -56,25 +56,23 @@ function SendTx(FromAdd,ToAdd,amt,Password,gas){
 	console.log("unlockAccount Success",FromAdd,unlockAccount);
 	var Amount = web3.toWei(amt, "ether")
 	var txHash = web3.eth.sendTransaction({from:FromAdd,to:ToAdd, value:Amount,gas:gas});
-	sweetAlert("Transfered",FromAdd,"to", ToAdd, "success");
+	sweetAlert("Done","Transaction Sent","success");
 	return txHash;
 }
 exports.SendTx=SendTx;
 //----------------------Transfer-Entire-Balance------------------//
 function SendEntireBalance(FromAdd,ToAdd,Password,gas){
 	var unlockAccount = web3.personal.unlockAccount(FromAdd,Password);
-    var price = web3.eth.gasPrice;  // current average price; or set your own
-    var bal = web3.eth.getBalance(FromAdd);
-    var balance = web3.toWei(bal,'ether');
+	console.log(unlockAccount);
+    var price = web3.eth.gasPrice;
+    var balance = web3.eth.getBalance(FromAdd);
     var value = balance.minus(gas * price);
     if (value.greaterThan(0)) {
         var txn = web3.eth.sendTransaction({from: FromAdd, to: ToAdd, gasPrice: price, gas: gas, value: value});
-        sweetAlert("Transfer",FromAdd,"to", ToAdd, "success");
+        sweetAlert("Done","Transaction Sent","success");
         return txn;
     }
-    // sweetAlert(" Transfer "+ FromAdd +" to "+ ToAdd +": (No funds available)","warning");
-    sweetAlert("No Funds Available","Transcation Failed","error")
-    console.log(unlockAccount);
+    sweetAlert("Insufficient Funds","Transcation Failed","error");
     return null;
 }
 exports.SendEntireBalance=SendEntireBalance;
