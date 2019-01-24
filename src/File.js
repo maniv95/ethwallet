@@ -93,16 +93,16 @@ exports.GetTxCount=GetTxCount;
 function getTxByAddress(myaddress, startBlockNumber, endBlockNumber) {
        if (endBlockNumber == null) {
           endBlockNumber = web3.eth.blockNumber;
-          console.log("Using endBlockNumber: " + endBlockNumber);
+          // console.log("Using endBlockNumber: " + endBlockNumber);
         }
 	   if (startBlockNumber == null) {
 	      startBlockNumber = endBlockNumber - 1000;
-	      console.log("Using startBlockNumber: " + startBlockNumber);
+	      // console.log("Using startBlockNumber: " + startBlockNumber);
 	    }
         console.log("Searching for transactions to/from account \"" + myaddress + "\" within blocks "  + startBlockNumber + " and " + endBlockNumber);
 	   for (var i = startBlockNumber; i <= endBlockNumber; i++) {
 	     if (i % 1000 === 0) {
-	      console.log("Searching block " + i);
+	      // console.log("Searching block " + i);
 	     }
 	     var block = web3.eth.getBlock(i, true);
 	     if (block != null && block.transactions != null) {
