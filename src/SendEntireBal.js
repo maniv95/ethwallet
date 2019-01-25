@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Table,Grid,Button,Form} from 'react-bootstrap';
 import { Card,CardBody,Row,Col} from 'reactstrap';
 import './App.css';
+// import $ from 'jquery'; 
 var Main = require('./File');
 class SendEntireBal extends Component {
   	constructor(props){
@@ -32,6 +33,7 @@ class SendEntireBal extends Component {
 	    let reader = new FileReader();
 	    reader.onload = this.onReaderLoad;
 	    reader.readAsText(event.target.files[0]);
+      event.target.files ='';
     }
 
     onReaderLoad = async(event)=>{

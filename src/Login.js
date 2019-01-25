@@ -71,7 +71,7 @@ class Login extends Component{
 		                <div>
 		                  <input type = "password" value = {this.state.Password1} onChange = {this.updatePasswordWhenLogin} placeholder=" Enter Password "/>
 		                </div><br/>
-               				<Button onClick = {this.onLogin}>Login</Button> <Button name="clearFields" onClick={this.clearFields}>Clear</Button>
+               				<Button onClick = {this.onLogin}>Login</Button> <Button className="clearFields" onClick={this.clearFields}>Clear</Button>
                       <br/><br/>
                       <br/><br/><br/><br/><br/>
                	    <Table>
