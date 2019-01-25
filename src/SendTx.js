@@ -18,7 +18,8 @@ class SendTx extends Component {
   	      ATxHash:'null',
   	      key:'',
   	      gas:'3000000',
-          txnn:''
+          txnn:'',
+          estGas:'null'
   	    }
   	    this.onReaderLoad = this.onReaderLoad.bind(this); 
   	    this.updatePasswordWhenLogin = this.updatePasswordWhenLogin.bind(this);
@@ -27,6 +28,7 @@ class SendTx extends Component {
   	    this.onLogin = this.onLogin.bind(this);
   	    this.onSendTx = this.onSendTx.bind(this);
         this.clearFields = this.clearFields.bind(this);
+        this.onEstimate = this.onEstimate.bind(this);
   	}
 	  updatePassword(a){
     	this.setState({Password: a.target.value});
@@ -42,6 +44,10 @@ class SendTx extends Component {
   	}
   	updateReceiver1(f){
     	this.setState({Receiver1: f.target.value});
+    }
+     onEstimate = () => {
+      var est = Main.EstimateGas(this.state.Receiver,this.state.Amount);
+      this.setState({estGas:est});
     }
   	onChange = async(event)=>{
 	    let reader = new FileReader();
@@ -153,6 +159,10 @@ class SendTx extends Component {
 		                   <td>Enter Amount To Send </td>
 		                   <td>{this.state.Amount}</td>
 		                 </tr>
+                     <tr>
+                       <td>Estimate Gas</td>
+                       <td>{this.state.estGas}</td>
+                     </tr>
 		                 <tr>
 		                  <td>Gas</td>
 		                  <td>{this.state.gas}</td>

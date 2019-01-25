@@ -13,6 +13,7 @@ var gas=3000000;
 exports.gas=gas;
 //----Sweet-Alerts------//
 var sweetAlert = require('sweetalert');
+// var swal = require('sweetalert');
 //-----------KeyStore-Generation-And-Private-Key-Extraction---------------//
 function KeyStoreGen(Password){
 	var params = { keyBytes: 32, ivBytes: 16 };
@@ -50,12 +51,21 @@ function ViewBalance(BlockchainAddress){
 	return Bal.toString();
 }
 exports.ViewBalance=ViewBalance;
+//------------Estimate-Gas-For-Transaction-------//
+function EstimateGas(ToAdd,Amount){
+	var amount = web3.toWei(Amount, "ether");
+	var estGas = web3.eth.estimateGas({to:ToAdd,data:"0x"});
+	var final =  estGas.toString();
+	return final;
+	// return JSON.stringify(est);
+}
+exports.EstimateGas =  EstimateGas;
 //--------------Sending-Transactions----------------//
 function SendTx(FromAdd,ToAdd,amt,Password,gas){
 	var unlockAccount = web3.personal.unlockAccount(FromAdd,Password);
 	var amount = web3.toWei(amt, "ether");
 	var bal = web3.eth.getBalance(FromAdd);
-	var balance = web3.frmoWei(bal,'ether');
+	var balance = web3.fromWei(bal,'ether');
 	if (balance !== 0 && balance >= amount){
 		var txHash = web3.eth.sendTransaction({from:FromAdd,to:ToAdd, value:amount,gas:gas});
 		sweetAlert("Done","Transaction Sent","success");
