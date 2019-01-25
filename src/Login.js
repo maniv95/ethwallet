@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Table,Grid,Button,Form} from 'react-bootstrap';
 import { Card,CardBody,Row,Col} from 'reactstrap';
+import $ from 'jquery';
 import './App.css';
 var Main = require('./File');
 class Login extends Component{
@@ -50,6 +51,7 @@ class Login extends Component{
           Balance:'null',
           key:''
       });
+      $("#FileSelect").val('');
     }
   	render() {
   		return(
@@ -66,7 +68,7 @@ class Login extends Component{
                   <CardBody><br/>
                   <h3 style={{color:"white"}}>Upload KeyStore File</h3><br/>
 	              <Form>
-	                  <input type = "file" onChange={this.onChange}/>
+	                  <input type = "file" id="FileSelect" onChange={this.onChange}/>
 	              </Form><br/><br/>
 		                <div>
 		                  <input type = "password" value = {this.state.Password1} onChange = {this.updatePasswordWhenLogin} placeholder=" Enter Password "/>

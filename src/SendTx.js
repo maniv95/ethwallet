@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Table,Grid,Button,Form} from 'react-bootstrap';
 import { Card,CardBody,Row,Col} from 'reactstrap';
+import $ from 'jquery';
 import './App.css';
 var Main = require('./File');
 class SendTx extends Component {
@@ -92,6 +93,7 @@ class SendTx extends Component {
           gas:'',
           txnn:''
       });
+      $("#FileSelect").val('');
     }
   	render(){
   		return(
@@ -108,7 +110,7 @@ class SendTx extends Component {
                   <CardBody><br/>
 	              <h4 style={{color:"white"}}> Login To Send</h4><br/>
 	              <Form>
-	                  <input type = "file" onChange={this.onChange}/>
+	                  <input type = "file" id="FileSelect" onChange={this.onChange}/>
 	              </Form><br/>
 		                <div>
 		                  <input type = "password" value = {this.state.Password1} onChange = {this.updatePasswordWhenLogin} placeholder=" Enter Password "/>
