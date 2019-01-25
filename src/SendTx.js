@@ -126,7 +126,7 @@ class SendTx extends Component {
                		 <b style={{color:"white"}}>Receiver Address</b> <br/><br/>
                		   <input type="text" value={this.state.Receiver} onChange={this.updateReceiver} placeholder="Enter Receiver Address"/>
                		 <br/><br/>
-               		 <b style={{color:"white"}}>Amount To Send</b><br/><br/>
+               		 <b style={{color:"white"}}>Amount To Send (In Ethers)</b><br/><br/>
                		 <input type="text" value={this.state.Amount} onChange={this.updateAmount} placeholder="Enter Amount"/>
                		 <br/>
                		</Form>
