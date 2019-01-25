@@ -15,6 +15,7 @@ class Login extends Component{
 	    this.onReaderLoad = this.onReaderLoad.bind(this); 
 	    this.updatePasswordWhenLogin = this.updatePasswordWhenLogin.bind(this);
 	    this.onLogin = this.onLogin.bind(this);
+      this.clearFields = this.clearFields.bind(this);
 	}
   	updatePasswordWhenLogin(d){
     	this.setState({Password1: d.target.value});
@@ -42,6 +43,14 @@ class Login extends Component{
   			console.log(error);
   		}
   	}
+    clearFields = () => { 
+        this.setState({
+          Password1:'',
+          BCAddress:'null',
+          Balance:'null',
+          key:''
+      });
+    }
   	render() {
   		return(
   			<div className="App">
@@ -62,7 +71,8 @@ class Login extends Component{
 		                <div>
 		                  <input type = "password" value = {this.state.Password1} onChange = {this.updatePasswordWhenLogin} placeholder=" Enter Password "/>
 		                </div><br/>
-               				<Button onClick = {this.onLogin}>Login</Button><br/><br/>
+               				<Button onClick = {this.onLogin}>Login</Button> <Button name="clearFields" onClick={this.clearFields}>Clear</Button>
+                      <br/><br/>
                       <br/><br/><br/><br/><br/>
                	    <Table>
 		                <thead>

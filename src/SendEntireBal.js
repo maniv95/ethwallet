@@ -12,7 +12,7 @@ class SendEntireBal extends Component {
   	      Balance:'null',
   	      Receiver1:'',
   	      key:'',
-  	      gas:'3000000',
+  	      gas:'null',
           txn:'null'
   	    }
 		this.onReaderLoad = this.onReaderLoad.bind(this); 
@@ -20,6 +20,7 @@ class SendEntireBal extends Component {
 		this.updateReceiver1 = this.updateReceiver1.bind(this);
 		this.onLogin = this.onLogin.bind(this);
 		this.onSendEntireBal = this.onSendEntireBal.bind(this);
+    this.clearFields = this.clearFields.bind(this);
 	}
 	updatePasswordWhenLogin(d){
     	this.setState({Password1: d.target.value});
@@ -45,12 +46,13 @@ class SendEntireBal extends Component {
   			var khex="0x";
   			var address=khex.concat(this.state.key.address);
   			this.setState({BCAddress:address});
+        this.setState({gas: Main.gas});
   		}
   		catch(error){
   			console.log(error);
   		}
   	}
-	onSendEntireBal = async() =>{
+	  onSendEntireBal = async() =>{
   		try{
   			var txnn = Main.SendEntireBalance(this.state.BCAddress,this.state.Receiver1,this.state.Password1,this.state.gas);
   			console.log(txnn);
@@ -60,6 +62,17 @@ class SendEntireBal extends Component {
   			console.log(error);
   		}
   	}
+    clearFields = () => { 
+        this.setState({
+          Password1:'',
+          BCAddress:'null',
+          Balance:'null',
+          Receiver1:'',
+          key:'',
+          gas:'',
+          txn:'null'
+      });
+    }
   	render(){
   		return(
   			<div className="App">
@@ -87,7 +100,7 @@ class SendEntireBal extends Component {
                     </Form>
                     <br/>
                          <div>
-                           <Button onClick={this.onSendEntireBal}>Send Entire Balance</Button>
+                           <Button onClick={this.onSendEntireBal}>Send Entire Balance</Button> <Button name="clearFields" onClick={this.clearFields}>Clear</Button>
                          </div>
                          <br/>
                     <Table>

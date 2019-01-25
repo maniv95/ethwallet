@@ -7,8 +7,8 @@ class GetDetails extends Component {
   	constructor(props){
   	    super(props)
   	    this.state = {
-  	      GTxHash:'0x67b27dcda20405bfb82f662d2f3e76629d106a878319e26552a6a1158a3ce258', 
-          //'0xf85475f59bd4b77f249f4ec5a63c225e4d15bc8f187b246c39fb3596f3efe4f3',
+  	      GTxHash:'0xf85475f59bd4b77f249f4ec5a63c225e4d15bc8f187b246c39fb3596f3efe4f3',
+          // '0x67b27dcda20405bfb82f662d2f3e76629d106a878319e26552a6a1158a3ce258', 
   	      TxDetails:'',
   	      txn:'',
   	      key:'',
@@ -25,6 +25,7 @@ class GetDetails extends Component {
   	    }
   	    this.updateGTxHash = this.updateGTxHash.bind(this);
         this.onGetTx=this.onGetTx.bind(this);
+        this.clearFields = this.clearFields.bind(this);
   	}
   	updateGTxHash(e){
   		this.setState({GTxHash: e.target.value});
@@ -49,6 +50,24 @@ class GetDetails extends Component {
   			console.log(error);
   		}
   	}
+    clearFields = () => { 
+        this.setState({
+          GTxHash:'',
+          TxDetails:'',
+          txn:'',
+          key:'',
+          gas:'null',
+          nonce:'null',
+          blockHash:'null',
+          blockNumber:'null',
+          TransactionIndex:'null',
+          from:'null',
+          to:'null',
+          Value:'null',
+          gasPrice:'null',
+          input:'null',
+      });
+    }
   	render(){
   		return(
   			<div className="App">
@@ -66,7 +85,7 @@ class GetDetails extends Component {
                         <b style={{color:"white"}}>Transaction Hash</b> <br/><br/>
                         <input type="text" value={this.state.GTxHash} onChange={this.updateGTxHash} placeholder="Enter Tx Hash"/><br/>
                      </Form><br/>
-                       <Button onClick={this.onGetTx}>Get TxDetails</Button>
+                       <Button onClick={this.onGetTx}>Get TxDetails</Button>  <Button name="clearFields" onClick={this.clearFields}>Clear</Button>
                        <br/><br/><br/><br/>
                      <Table>
                         <thead>

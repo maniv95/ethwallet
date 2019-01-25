@@ -25,6 +25,7 @@ class SendTx extends Component {
   	    this.updateAmount = this.updateAmount.bind(this);
   	    this.onLogin = this.onLogin.bind(this);
   	    this.onSendTx = this.onSendTx.bind(this);
+        this.clearFields = this.clearFields.bind(this);
   	}
 	  updatePassword(a){
     	this.setState({Password: a.target.value});
@@ -59,6 +60,7 @@ class SendTx extends Component {
   			var khex="0x";
   			var address=khex.concat(this.state.key.address);
   			this.setState({BCAddress:address});
+        this.setState({gas:Main.gas});
   		}
   		catch(error){
   			console.log(error);
@@ -76,6 +78,21 @@ class SendTx extends Component {
   			console.log(error);
   		}
   	}
+    clearFields = () => { 
+        this.setState({
+          Password1:'',
+          BCAddress:'null',
+          Balance:'null',
+          Receiver:'',
+          Receiver1:'',
+          Amount:'',
+          TxCount:'null',
+          ATxHash:'null',
+          key:'',
+          gas:'',
+          txnn:''
+      });
+    }
   	render(){
   		return(
   			<div className="App">
@@ -107,7 +124,7 @@ class SendTx extends Component {
                		</Form>
                		<br/>
                   <div>
-                        <button onClick={this.onSendTx}>Send</button>
+                        <button onClick={this.onSendTx}>Send</button> <Button name="clearFields" onClick={this.clearFields}>Clear</Button>
                   </div>
                   <br/><br/>
 		            <Table bordered responsive>

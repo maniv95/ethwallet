@@ -15,6 +15,7 @@ class GetTxByAdd extends Component {
         this.updateEndBlockNumber = this.updateEndBlockNumber.bind(this);
         this.updateBCAddress = this.updateBCAddress.bind(this);
         this.onGetTxByAddress=this.onGetTxByAddress.bind(this);
+        this.clearFields = this.clearFields.bind(this);
     }
     updateGTxHash(e){
       this.setState({GTxHash: e.target.value});
@@ -35,6 +36,13 @@ class GetTxByAdd extends Component {
       catch(error){
         console.log(error);
       }
+    }
+    clearFields = () => { 
+        this.setState({
+          BCAddress:'',
+          startBlockNumber:'',
+          endBlockNumber:'',
+      });
     }
     render(){
       return(
@@ -60,7 +68,7 @@ class GetTxByAdd extends Component {
                       <input type="text" value={this.state.endBlockNumber} onChange={this.updateEndBlockNumber} placeholder="Enter EndBlockNumber"/>
                     </Form>
                       <br/><br/>
-                    <Button onClick={this.onGetTxByAddress}>Get Transactions</Button>
+                    <Button onClick={this.onGetTxByAddress}>Get Transactions</Button>  <Button name="clearFields" onClick={this.clearFields}>Clear</Button>
                     <br/><br/>
                   <br/><br/><br/><br/>
                   </CardBody>

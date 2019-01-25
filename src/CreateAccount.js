@@ -12,6 +12,7 @@ class CreateAccount extends Component{
 	    }
 	    this.updatePassword = this.updatePassword.bind(this);
 	    this.onCreate = this.onCreate.bind(this);
+      this.clearFields = this.clearFields.bind(this);
 	}
 	updatePassword(a){
     	this.setState({Password: a.target.value});
@@ -24,6 +25,12 @@ class CreateAccount extends Component{
   	catch(error){
   		console.log(error);
   	}
+  }
+  clearFields = () => { 
+        this.setState({
+          Password:'',
+          PrivateKey:'null'
+        });
   }
     render(){
   		return(
@@ -44,7 +51,8 @@ class CreateAccount extends Component{
                       <input type ="password" value = {this.state.Password} onChange = {this.updatePassword} placeholder="Enter Password"/>
                    </div>
                    <br/><br/>
-                    <Button onClick = {this.onCreate}>Download Keystore</Button><br/><br/><br/>
+                    <Button onClick = {this.onCreate}>Download Keystore</Button> <Button name="clearFields" onClick={this.clearFields}>Clear</Button>
+                    <br/><br/>
                    <br/><br/>
                     <Table>
                     <tbody>
