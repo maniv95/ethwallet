@@ -1,3 +1,4 @@
+/*eslint-disable*/
 //--------------------------------------------------------------Beginning-Of-Code-------------------------------------------------------//
 //--------Node-Module-For-Keystore -------//
 const keythereum = require("keythereum");
@@ -40,36 +41,40 @@ function LoginWithKeyStoreFile(KeyStore,Password){
     var address= khex.concat(json.address);
     var account = web3.personal.unlockAccount(address,Password);
     sweetAlert("Logged In",address,"success");
-    console.log(account);
 }
 exports.LoginWithKeyStoreFile=LoginWithKeyStoreFile;
 //----------------Check-Balance---------------------//
 function ViewBalance(BlockchainAddress){
 	var bal = web3.eth.getBalance(BlockchainAddress);
-	var Bal = web3.toWei(bal,'ether');
+	var Bal = web3.fromWei(bal,'ether');
 	return Bal.toString();
 }
 exports.ViewBalance=ViewBalance;
 //--------------Sending-Transactions----------------//
 function SendTx(FromAdd,ToAdd,amt,Password,gas){
 	var unlockAccount = web3.personal.unlockAccount(FromAdd,Password);
-	console.log("unlockAccount Success",FromAdd,unlockAccount);
-	var Amount = web3.toWei(amt, "ether")
-	var txHash = web3.eth.sendTransaction({from:FromAdd,to:ToAdd, value:Amount,gas:gas});
-	sweetAlert("Done","Transaction Sent","success");
-	return txHash;
+	var amount = web3.toWei(amt, "ether");
+	var bal = web3.eth.getBalance(FromAdd);
+	var balance = web3.frmoWei(bal,'ether');
+	if (balance !== 0 && balance >= amount){
+		var txHash = web3.eth.sendTransaction({from:FromAdd,to:ToAdd, value:amount,gas:gas});
+		sweetAlert("Done","Transaction Sent","success");
+		return txHash;
+	}
+	else{
+		sweetAlert("Insufficient Funds","Tranasaction Failed","error");
+	}
 }
 exports.SendTx=SendTx;
 //----------------------Transfer-Entire-Balance------------------//
 function SendEntireBalance(FromAdd,ToAdd,Password,gas){
 	var unlockAccount = web3.personal.unlockAccount(FromAdd,Password);
-	console.log(unlockAccount);
     var price = web3.eth.gasPrice;
     var balance = web3.eth.getBalance(FromAdd);
     var value = balance.minus(gas * price);
-    if (value.greaterThan(0)) {
+    if (value.greaterThan(0)){
         var txn = web3.eth.sendTransaction({from: FromAdd, to: ToAdd, gasPrice: price, gas: gas, value: value});
-        sweetAlert("Done","Transaction Sent","success");
+        sweetAlert("Done","Transcation Success","success");
         return txn;
     }
     sweetAlert("Insufficient Funds","Transcation Failed","error");
@@ -99,7 +104,7 @@ function getTxByAddress(myaddress, startBlockNumber, endBlockNumber) {
 	      startBlockNumber = endBlockNumber - 1000;
 	      // console.log("Using startBlockNumber: " + startBlockNumber);
 	    }
-        console.log("Searching for transactions to/from account \"" + myaddress + "\" within blocks "  + startBlockNumber + " and " + endBlockNumber);
+        // console.log("Searching for transactions to/from account \"" + myaddress + "\" within blocks "  + startBlockNumber + " and " + endBlockNumber);
 	   for (var i = startBlockNumber; i <= endBlockNumber; i++) {
 	     if (i % 1000 === 0) {
 	      // console.log("Searching block " + i);
