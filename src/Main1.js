@@ -7,6 +7,7 @@ import SendTx from './SendTx'
 import SendEntireBal from './SendEntireBal'
 import GetTxDetails from './GetTxDetails'
 import GetTxByAdd from './GetTxByAdd'
+import TxDecode from './TxHashDecode'
 
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
@@ -23,6 +24,7 @@ const Main = () => (
       <Route path='/SendAllEth' component={SendEntireBal}/>
       <Route path='/GetByTxHash' component={GetTxDetails}/>
       <Route path='/GetByAddress' component={GetTxByAdd}/>
+      <Route path='/DecodeHash' component={TxDecode}/>
     </Switch>
   </main>
 )
