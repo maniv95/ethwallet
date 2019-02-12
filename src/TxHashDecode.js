@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Grid,Button} from 'react-bootstrap';
 import { Card,CardBody,Row,Col} from 'reactstrap';
-import Main from 'views/File.js';
+var Main = require('./File');
 class TxData extends Component{
    constructor(props){
       super(props);
