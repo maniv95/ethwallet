@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Grid,Button,Form} from 'react-bootstrap';
 import { Card,CardBody,Row,Col} from 'reactstrap';
-import Main from 'views/File.js';
+import Main from './File';
 import $ from 'jquery';
 class TxData extends Component{
    constructor(props){
